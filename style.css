@@ -1,126 +1,51 @@
-/* นำเข้าฟอนต์สไตล์เรียบเท่ ทันสมัย */
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap');
 
 :root {
     --primary-color: #507563;
-    --primary-dark: #3a5648;
-    --accent-color: #FF5722; /* สีส้มตัดกันแบบศิลปากร */
-    --bg-color: #F9F8F6;
+    --bg-color: #F8F9FA;       /* ขาวนวลสะอาดตา */
     --card-bg: #FFFFFF;
-    --text-color: #1A1A1A;
-    --border-color: #1A1A1A;
+    --text-main: #212529;
+    --text-muted: #6C757D;
 }
 
 body {
     font-family: 'Prompt', sans-serif;
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: var(--text-main);
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-/* Header & Nav */
-header {
-    background-color: #FFFFFF;
-    border-bottom: 2px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
-    margin: auto;
-    padding: 15px 20px;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-}
-
-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease;
-}
-
-nav a:hover {
-    color: var(--accent-color);
-}
-
-/* ส่วน Hero Section (เน้นสีเขียว #507563 พื้นหลัง) */
+/* Hero Section แบบมินิมอล เน้นการจัดวางข้อความ */
 #hero {
-    background-color: var(--primary-color);
-    color: #FFFFFF;
-    padding: 80px 20px;
+    background-color: var(--card-bg);
+    padding: 100px 20px;
     text-align: center;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 1px solid #E9ECEF;
 }
 
 #hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-#hero h1 span {
-    color: #FFE082; /* เหลืองมัสตาร์ดสว่าง เพื่อเน้นชื่อ */
-}
-
-#hero p {
-    font-size: 1.2rem;
-    font-weight: 300;
-    opacity: 0.9;
-}
-
-/* Section ทั่วไป */
-section {
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 0 20px;
-}
-
-h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     color: var(--primary-color);
-    border-left: 6px solid var(--accent-color);
-    padding-left: 15px;
-    margin-bottom: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
-/* การ์ดผลงาน สไตล์กรอบคมชัด */
+/* การ์ดผลงาน สไตล์มินิมอล มีมิติเงาฟุ้ง */
 .project-card {
     background: var(--card-bg);
-    border: 2px solid var(--border-color);
-    border-radius: 4px;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 4px 4px 0px var(--border-color); /* เงาแบบเงาแข็งสไตล์ Art */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    border-radius: 16px; /* มุมโค้งมน นุ่มนวล */
+    padding: 30px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* เงาสบายตา */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 7px 7px 0px var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(80, 117, 99, 0.15); /* เงาอมเขียวเบาๆ */
 }
-
 /* ปุ่มกดจุดเน้น (Call to Action) */
 .btn {
     display: inline-block;
