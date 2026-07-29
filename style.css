@@ -1,3 +1,7 @@
+/* เพิ่มบรรทัดนี้ไว้บนสุดของ style.css */
+html {
+    scroll-behavior: smooth;
+}
 /* นำเข้าฟอนต์สไตล์เรียบเท่ ทันสมัย */
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
 
