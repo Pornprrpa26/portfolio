@@ -247,6 +247,37 @@ h2.section-title {
     }
 }
 
+/* กรอบครอบเนื้อหาเกี่ยวกับฉัน และ ทักษะความสามารถ */
+.info-card {
+    background: var(--card-bg); /* พื้นหลังสีขาว */
+    border: 2px solid var(--border-color); /* เส้นขอบดำคมชัด */
+    border-radius: 6px;
+    padding: 30px;
+    box-shadow: 5px 5px 0px var(--border-color); /* เงาแข็งสไตล์กราฟิก */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* เอฟเฟกต์เบาๆ เวลาเอาเมาส์ไปชี้ */
+.info-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0px var(--accent-color); /* เปลี่ยนเงาเป็นสีส้มเพิ่มมิติ */
+}
+
+/* ตกแต่งรายการทักษะในกล่อง */
+.info-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.info-card li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.info-card li:last-child {
+    margin-bottom: 0;
+}
 @media (max-width: 600px) {
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr); /* มือถือแสดง 2 รูป */
