@@ -1,5 +1,5 @@
 /* ===================================================
-   ฟังก์ชัน Lightbox (ต้องอยู่นอก DOMContentLoaded)
+   ฟังก์ชัน Lightbox (สำหรับขยายดูรูปภาพ)
 =================================================== */
 function openLightbox(imageSrc) {
     const lightbox = document.getElementById('lightbox');
@@ -19,12 +19,16 @@ function closeLightbox() {
 }
 
 /* ===================================================
-   ส่วนทำงานอื่นๆ เมื่อหน้าเว็บโหลดเสร็จ
+   ส่วนทำงานหลักเมื่อหน้าเว็บโหลดเสร็จ
 =================================================== */
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Smooth Scroll เมื่อคลิกเมนู
+    /* ---------------------------------------------------
+       1. Smooth Scroll เมื่อคลิกเมนู (เลื่อนนุ่มนวล + เว้นระยะ Header)
+    --------------------------------------------------- */
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const header = document.querySelector('header');
+
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -32,19 +36,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                // คำนวณความสูง Header เพื่อไม่ให้บังหัวข้อ
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
     });
 
-    // 2. Scrollspy (ไฮไลท์เมนูตามส่วนที่กำลังดูอยู่)
+    /* ---------------------------------------------------
+       2. Scrollspy (ไฮไลท์แถบเมนูตามส่วนที่กำลังดูอยู่)
+    --------------------------------------------------- */
     const sections = document.querySelectorAll('section');
+    
     window.addEventListener('scroll', () => {
         let currentSectionId = '';
-        const scrollPosition = window.scrollY + 200;
+        const scrollPosition = window.scrollY + 200; // ระยะล่วงหน้าสำหรับการเปลี่ยนไฮไลท์
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -63,12 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. สร้างปุ่ม Back to Top
+    /* ---------------------------------------------------
+       3. ปุ่ม Back to Top (กลับขึ้นด้านบน)
+    --------------------------------------------------- */
     const backToTopBtn = document.createElement('button');
     backToTopBtn.innerHTML = '↑';
     backToTopBtn.id = 'backToTopBtn';
     document.body.appendChild(backToTopBtn);
 
+    // แสดงปุ่มเมื่อเลื่อนหน้าลงมาเกิน 300px
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
             backToTopBtn.style.display = 'block';
@@ -77,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // กดปุ่มเลื่อนกลับขึ้นบนสุด
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
