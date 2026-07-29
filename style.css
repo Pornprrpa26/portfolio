@@ -147,3 +147,104 @@ footer {
     padding: 25px;
     margin-top: 80px;
 }
+
+/* จัดหัวข้อให้อยู่ตรงกลาง */
+h2.section-title {
+    text-align: center;
+    border-left: none; /* ยกเลิกเส้นข้างเดิม */
+    border-bottom: 4px solid var(--accent-color); /* เปลี่ยนมาเป็นเส้นใต้แทน */
+    display: table;
+    margin: 0 auto 30px auto;
+    padding: 0 10px 5px 10px;
+}
+
+/* จัดเลย์เอาต์รูปภาพ 5 รูปต่อบรรทัด */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 คอลัมน์เท่าๆ กัน */
+    gap: 15px; /* ระยะห่างระหว่างรูป */
+}
+
+/* สไตล์แต่ละกล่องรูปภาพ */
+.gallery-item {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 5px 5px 0px var(--accent-color);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 160px; /* ความสูงคงที่ของรูปย่อ */
+    object-fit: cover; /* ครอบรูปให้พอดีกล่องไม่เบี้ยว */
+    display: block;
+}
+
+.gallery-item .item-title {
+    padding: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background-color: #ffffff;
+}
+
+/* --- ระบบหน้าต่างขยายรูปภาพ (Lightbox Modal) --- */
+.lightbox {
+    display: none; /* ซ่อนไว้เป็นค่าเริ่มต้น */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* พื้นหลังดำโปร่งแสง */
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    max-width: 85%;
+    max-height: 85%;
+    border: 3px solid #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    animation: zoomIn 0.2s ease;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* รองรับการแสดงผลบนหน้าจอมือถือ (Responsive) */
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr); /* จอกลางๆ แสดง 3 รูป */
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* มือถือแสดง 2 รูป */
+    }
+}
