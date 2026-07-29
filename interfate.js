@@ -50,13 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ===================================================
        3. สร้างปุ่ม Back to Top (กลับขึ้นด้านบนแบบอัตโนมัติ)
     =================================================== */
-    // สร้าง Element ปุ่มด้วย JS
     const backToTopBtn = document.createElement('button');
     backToTopBtn.innerHTML = '↑';
     backToTopBtn.id = 'backToTopBtn';
     document.body.appendChild(backToTopBtn);
 
-    // ตรวจสอบการ สกอร์ล เพื่อซ่อน/แสดงปุ่ม
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
             backToTopBtn.style.display = 'block';
@@ -65,12 +63,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // เมื่อกดปุ่มให้เลื่อนขึ้นบนสุด
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
+
+    /* ===================================================
+       4. ฟังก์ชันระบบ Lightbox (สำหรับขยายรูปภาพ) 
+    =================================================== */
+    window.openLightbox = function(imageSrc) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        if (lightbox && lightboxImg) {
+            lightboxImg.src = imageSrc;
+            lightbox.style.display = 'flex';
+        }
+    };
+
+    window.closeLightbox = function() {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            lightbox.style.display = 'none';
+        }
+    };
 
 });
