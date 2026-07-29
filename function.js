@@ -1,11 +1,30 @@
-// รอให้ DOM โหลดสมบูรณ์ก่อนทำงาน
+/* ===================================================
+   ฟังก์ชัน Lightbox (ต้องอยู่นอก DOMContentLoaded)
+=================================================== */
+function openLightbox(imageSrc) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    if (lightbox && lightboxImg) {
+        lightboxImg.src = imageSrc;
+        lightbox.style.display = 'flex';
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'none';
+    }
+}
+
+/* ===================================================
+   ส่วนทำงานอื่นๆ เมื่อหน้าเว็บโหลดเสร็จ
+=================================================== */
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ===================================================
-       1. Smooth Scroll เมื่อคลิกเมนู
-    =================================================== */
+    // 1. Smooth Scroll เมื่อคลิกเมนู
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
-    
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -21,14 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ===================================================
-       2. Scrollspy (ไฮไลท์เมนูตามส่วนที่กำลังดูอยู่)
-    =================================================== */
+    // 2. Scrollspy (ไฮไลท์เมนูตามส่วนที่กำลังดูอยู่)
     const sections = document.querySelectorAll('section');
-    
     window.addEventListener('scroll', () => {
         let currentSectionId = '';
-        const scrollPosition = window.scrollY + 200; // ระยะ offset
+        const scrollPosition = window.scrollY + 200;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -47,9 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ===================================================
-       3. สร้างปุ่ม Back to Top (กลับขึ้นด้านบนแบบอัตโนมัติ)
-    =================================================== */
+    // 3. สร้างปุ่ม Back to Top
     const backToTopBtn = document.createElement('button');
     backToTopBtn.innerHTML = '↑';
     backToTopBtn.id = 'backToTopBtn';
@@ -69,25 +83,5 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
-
-    /* ===================================================
-       4. ฟังก์ชันระบบ Lightbox (สำหรับขยายรูปภาพ) 
-    =================================================== */
-    window.openLightbox = function(imageSrc) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        
-        if (lightbox && lightboxImg) {
-            lightboxImg.src = imageSrc;
-            lightbox.style.display = 'flex';
-        }
-    };
-
-    window.closeLightbox = function() {
-        const lightbox = document.getElementById('lightbox');
-        if (lightbox) {
-            lightbox.style.display = 'none';
-        }
-    };
 
 });
