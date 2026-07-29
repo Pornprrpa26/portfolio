@@ -5,7 +5,7 @@
     --primary-color: #507563;
     --primary-dark: #3a5648;
     --accent-color: #FF5722; /* สีส้มตัดกันแบบศิลปากร */
-    --bg-color: #F9F8F6;
+    --bg-color: #F7F3EB;     /* 🎨 ปรับเป็นสีครีมนุ่มนวล อบอุ่นสบายตา */
     --card-bg: #FFFFFF;
     --text-color: #1A1A1A;
     --border-color: #1A1A1A;
@@ -118,8 +118,8 @@ h2 {
 
 .project-card:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 7px 7px 0px var(--accent-color);
 }
+
 /* ปุ่มกดจุดเน้น (Call to Action) */
 .btn {
     display: inline-block;
@@ -146,34 +146,4 @@ footer {
     text-align: center;
     padding: 25px;
     margin-top: 80px;
-}
-/* สไตล์ปุ่ม Back to Top */
-#backToTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 99;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: 2px solid var(--border-color);
-    outline: none;
-    background-color: var(--accent-color);
-    color: white;
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 4px;
-    box-shadow: 3px 3px 0px var(--border-color);
-    transition: all 0.2s ease;
-}
-
-#backToTopBtn:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-/* สถานะ Active เมื่อเมนูถูกเลือก */
-nav a.active {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--accent-color);
 }
